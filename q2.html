@@ -1,0 +1,40 @@
+<html>
+<head>
+</head>
+<body>
+    <script type="text/javascript">
+
+        let data = [{ team: 'green', name: 'Bob', points: 5, isActive: true },
+        { team: 'black', name: 'jay', points: 5, isActive: true },
+        { team: 'green', name: 'shikha', points: 15, isActive: false },
+        { team: 'green', name: 'priya', points: 55, isActive: true },
+        { team: 'red', name: 'nishi', points: 25, isActive: true }
+            , { team: 'red', name: 'neha', points: 5, isActive: false }]
+        function myFunction(val) {
+            let point = []
+            let team = []
+            val.map((item) => {
+                if (!team.includes(item.team)) {
+                    team.push(item.team)
+                }
+            })
+            team.map((i) => {
+                let score = 0;
+                val.map((item) => {
+                    if (i === item.team && item.isActive) {
+                        score = score + item.points
+                    }
+                })
+                point.push({ team: i, points: score })
+            })
+            point.sort((a, b) => {
+                return a.points - b.points
+            }).reverse();
+            return point
+        }
+        let d = myFunction(data)
+        console.log(d)
+    </script>
+</body>
+
+</html>
